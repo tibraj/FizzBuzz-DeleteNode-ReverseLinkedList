@@ -37,3 +37,23 @@ let deleteNode = function(node) {
 
 
 //Reverse Linked List
+function ListNode(val, next) {
+    this.val = (val === undefined ? 0 : val);
+    this.next = (next === undefined ? null : next);
+}
+function reverseList(head) {
+    let node = head;
+    let prev = null;
+    let temp = new ListNode();
+    while(head) {
+        temp = node.next;
+        node.next = prev;
+        prev = node;
+        node = temp;
+    }
+    return prev;
+};
+// While traversing the list, the current node's next pointer is changed to its
+// previous element. There is no reference to the previous node, so the previous
+// element is stored beforehand. Another pointer is needed to store the next node
+// before changing the reference.
