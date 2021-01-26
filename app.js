@@ -53,6 +53,16 @@ function reverseList(head) {
     }
     return prev;
 };
+
+function reverseListRecursive(head) {
+    if(!head || !head.next) {
+        return head;
+    }
+    let temp = reverseList(head.next);
+    head.next.next = head;
+    head.next = undefined;
+    return temp;
+}
 // While traversing the list, the current node's next pointer is changed to its
 // previous element. There is no reference to the previous node, so the previous
 // element is stored beforehand. Another pointer is needed to store the next node
